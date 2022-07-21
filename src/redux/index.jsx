@@ -1,21 +1,33 @@
-const initialState ={
-    counter: 0,
-}
+// import { DECREMENT, INCREMENT, RESET } from './types/counterTypes';
 
-const reducer = (state = initialState, action)=>{
-    switch (action.type) {
-        case 'INCREMENT':
-            return{counter: state.counter + 1}
-        
-        case 'DECREMENT':
-            return{counter: state.counter - 1}
+// const initialState = {
+//   counter: 0,
+// };
 
-        case 'RESET':
-            return{counter: 0} //{counter: initialState}
-            
-        default:
-            return state;
-    }
+// const reducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case INCREMENT:
+//       return { counter: state.counter + 1 };
+//     case DECREMENT:
+//       return { counter: state.counter - 1 };
+//     case RESET:
+//       return { counter: 0 };
+//     default:
+//       return state;
+//   }
+// };
+// export default reducer;
+
+import { createStore, combineReducers } from 'redux';
+import counterReducer from './reducers/counterReducer';
+import todoReducer from './reducers/todoReducers';
+
+const rootReducer = combineReducers({
+  counterReducer: counterReducer,
+  todoReducer: todoReducer,
+});
+
+export const combinedStore = () => {
+  const store = createStore(rootReducer);
+  return store;
 };
-
-export default reducer;
