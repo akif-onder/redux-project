@@ -23,11 +23,11 @@ import counterReducer from './reducers/counterReducer';
 import todoReducer from './reducers/todoReducers';
 
 const rootReducer = combineReducers({
-  counterReducer: counterReducer,
-  todoReducer: todoReducer,
+  counterRed: counterReducer,
+  todoRed: todoReducer,
 });
 
-export const combinedStore = () => {
+export const getStore = () => {
   const store = createStore(rootReducer);
   return store;
 };
